@@ -6,11 +6,11 @@ import com.personal.apisecurity.model.dto.ProfileEntityDTO;
 
 public interface ProfileService {
 
-	ProfileEntityDTO saveUser(ProfileEntityDTO profile);
+	ProfileEntityDTO saveProfile(ProfileEntityDTO profile);
 		
-	Boolean deleteUser(Integer id);
+	Boolean deleteProfile(Integer id);
 	
-	ProfileEntityDTO getUserById(Integer id);
+	ProfileEntityDTO getProfileById(Integer id);
 	
-	List<ProfileEntityDTO> getAllUsers();
+	List<ProfileEntityDTO> getAllProfiles();
 }

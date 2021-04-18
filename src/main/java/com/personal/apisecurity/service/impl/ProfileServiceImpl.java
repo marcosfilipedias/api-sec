@@ -24,24 +24,24 @@ public class ProfileServiceImpl implements ProfileService{
 	}
 
 	@Override
-	public ProfileEntityDTO saveUser(ProfileEntityDTO profile) {
+	public ProfileEntityDTO saveProfile(ProfileEntityDTO profile) {
 		Profile savedProfile = profileRepository.saveAndFlush(profileMapper.toEntity(profile));
 		return profileMapper.toDto(savedProfile);
 	}
 
 	@Override
-	public Boolean deleteUser(Integer id) {
+	public Boolean deleteProfile(Integer id) {
 		profileRepository.deleteById(id);
-		return getUserById(id) == null;
+		return getProfileById(id) == null;
 	}
 
 	@Override
-	public ProfileEntityDTO getUserById(Integer id) {
+	public ProfileEntityDTO getProfileById(Integer id) {
 		return profileMapper.toDto(profileRepository.findById(id).get());
 	}
 
 	@Override
-	public List<ProfileEntityDTO> getAllUsers() {
+	public List<ProfileEntityDTO> getAllProfiles() {
 		return profileRepository.findAll().stream().map(x -> new ProfileEntityDTO(x.getPrfId(), x.getPrfName())).collect(Collectors.toList());
 	}
 	
