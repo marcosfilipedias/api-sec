@@ -8,20 +8,17 @@ public class UserViewDTO {
 	
 	private String usrEmail;
 	
-	private String usrPassword;
-	
 	private Boolean usrStatus;
 
 	public UserViewDTO() {
 		super();
 	}
 
-	public UserViewDTO(Integer usrId, String usrName, String usrEmail, String usrPassword, Boolean usrStatus) {
+	public UserViewDTO(Integer usrId, String usrName, String usrEmail, Boolean usrStatus) {
 		super();
 		this.usrId = usrId;
 		this.usrName = usrName;
 		this.usrEmail = usrEmail;
-		this.usrPassword = usrPassword;
 		this.usrStatus = usrStatus;
 	}
 
@@ -47,14 +44,6 @@ public class UserViewDTO {
 
 	public void setUsrEmail(String usrEmail) {
 		this.usrEmail = usrEmail;
-	}
-
-	public String getUsrPassword() {
-		return usrPassword;
-	}
-
-	public void setUsrPassword(String usrPassword) {
-		this.usrPassword = usrPassword;
 	}
 
 	public Boolean getUsrStatus() {
