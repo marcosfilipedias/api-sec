@@ -7,7 +7,7 @@ import com.personal.apisecurity.model.dto.UserViewDTO;
 
 public interface UserService {
 
-	UserEntityDTO saveUser(UserEntityDTO user);
+	UserViewDTO saveUser(UserEntityDTO user);
 		
 	Boolean deleteUser(Integer id);
 	
