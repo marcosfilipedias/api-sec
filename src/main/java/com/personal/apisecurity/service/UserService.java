@@ -14,4 +14,6 @@ public interface UserService {
 	UserViewDTO getUserById(Integer id);
 	
 	List<UserViewDTO> getAllUsers();
+	
+	Integer buscarIdUsuarioToken(String login);
 }

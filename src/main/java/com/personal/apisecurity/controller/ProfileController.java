@@ -11,7 +11,7 @@ import com.personal.apisecurity.model.dto.ProfileEntityDTO;
 import com.personal.apisecurity.service.ProfileService;
 
 @Controller
-@RequestMapping("/profile")
+@RequestMapping("/api/security/public/profile")
 public class ProfileController {
 
 	private final ProfileService profileService;

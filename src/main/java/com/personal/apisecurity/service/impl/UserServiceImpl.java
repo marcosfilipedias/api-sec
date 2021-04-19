@@ -46,4 +46,9 @@ public class UserServiceImpl implements UserService{
 		return userRepository.findAll().stream().map(x -> new UserViewDTO(x.getUsrId(), x.getUsrName(), x.getUsrEmail(), x.getUsrStatus())).collect(Collectors.toList());
 	}
 
+	@Override
+	public Integer buscarIdUsuarioToken(String login) {
+		return userRepository.getUserByLogin(login);
+	}
+
 }

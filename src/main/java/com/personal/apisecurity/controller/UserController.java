@@ -12,7 +12,7 @@ import com.personal.apisecurity.model.dto.UserViewDTO;
 import com.personal.apisecurity.service.UserService;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/api/security/public/user")
 public class UserController {
 
 	private final UserService userService;
