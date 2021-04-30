@@ -1,12 +1,16 @@
 package com.personal.apisecurity.controller;
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.google.gson.Gson;
 import com.personal.apisecurity.model.dto.UserEntityDTO;
 import com.personal.apisecurity.model.dto.UserViewDTO;
 import com.personal.apisecurity.service.UserService;
@@ -23,8 +27,22 @@ public class UserController {
 	}
 	
 	@PostMapping("/save")
-	public ResponseEntity<UserViewDTO> saveUser(@RequestBody String userJson) {
-		UserEntityDTO user = new Gson().fromJson(userJson, UserEntityDTO.class);
-		return ResponseEntity.ok(userService.saveUser(user));
+	public ResponseEntity<UserViewDTO> saveUser(@RequestBody UserEntityDTO userJson) {
+		return ResponseEntity.ok(userService.saveUser(userJson));
+	}
+	
+	@DeleteMapping("{id}")
+	public ResponseEntity<Boolean> deleteUser(@PathVariable Long id){
+		return ResponseEntity.ok(userService.deleteUser(id));
+	}
+	
+	@GetMapping("{id}")
+	public ResponseEntity<UserViewDTO> getUser(@PathVariable Long id){
+		return ResponseEntity.ok(userService.getUserById(id));
+	}
+	
+	@GetMapping()
+	public ResponseEntity<List<UserViewDTO>> getAllUsers(){
+		return ResponseEntity.ok(userService.getAllUsers());
 	}
 }
