@@ -26,19 +26,26 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public UserViewDTO saveUser(UserEntityDTO user) {
-		User savedUser = userRepository.saveAndFlush(userMapper.toEntity(user));	
+		
+		User savedUser = userMapper.toEntity(user);
+		savedUser = userRepository.saveAndFlush(savedUser);	
+		
 		return userMapper.toViewDto(savedUser);
 	}
 
 	@Override
-	public Boolean deleteUser(Integer id) {
+	public Boolean deleteUser(Long id) {
 		userRepository.deleteById(id);
 		return getUserById(id) == null;
 	}
 
 	@Override
-	public UserViewDTO getUserById(Integer id) {
-		return userMapper.toViewDto(userRepository.findById(id).get());
+	public UserViewDTO getUserById(Long id) {
+		try {
+			return userMapper.toViewDto(userRepository.findById(id).get());
+		}catch(Exception e) {
+			return null;
+		}
 	}
 
 	@Override

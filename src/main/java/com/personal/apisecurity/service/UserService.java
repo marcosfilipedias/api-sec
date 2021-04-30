@@ -9,9 +9,9 @@ public interface UserService {
 
 	UserViewDTO saveUser(UserEntityDTO user);
 		
-	Boolean deleteUser(Integer id);
+	Boolean deleteUser(Long id);
 	
-	UserViewDTO getUserById(Integer id);
+	UserViewDTO getUserById(Long id);
 	
 	List<UserViewDTO> getAllUsers();
 	

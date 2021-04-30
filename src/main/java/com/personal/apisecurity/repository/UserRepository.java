@@ -8,9 +8,9 @@ import org.springframework.stereotype.Repository;
 import com.personal.apisecurity.model.User;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Integer> {
+public interface UserRepository extends JpaRepository<User, Long> {
 
-	@Query("select u.id from User u where u.login = :login")
-	Integer getUserByLogin(@Param("login") String login);
+	@Query("select u.id from User u where u.usrEmail = :usrEmail")
+	Integer getUserByLogin(@Param("usrEmail") String login);
 
 }

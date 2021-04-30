@@ -42,7 +42,7 @@ public class ProfileServiceImpl implements ProfileService{
 
 	@Override
 	public List<ProfileEntityDTO> getAllProfiles() {
-		return profileRepository.findAll().stream().map(x -> new ProfileEntityDTO(x.getPrfId(), x.getPrfName())).collect(Collectors.toList());
+		return profileRepository.findAll().stream().map(x -> new ProfileEntityDTO(x.getId(), x.getPrfName())).collect(Collectors.toList());
 	}
 	
 	
