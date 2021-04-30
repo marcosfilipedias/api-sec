@@ -2,10 +2,13 @@ package com.personal.apisecurity.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -18,9 +21,9 @@ public class User implements Serializable{
 	private static final long serialVersionUID = -8623263590606186788L;
 
 	@Id
-	@Basic(optional = false)
 	@Column(name = "USR_ID")
-	private Integer usrId;
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	private Long usrId;
 	
 	@Column(name = "USR_NAME")
 	private String usrName;
@@ -33,25 +36,30 @@ public class User implements Serializable{
 	
 	@Column(name = "USR_STATUS")
 	private Boolean usrStatus;
+	
+	@ManyToOne()
+	@JoinColumn(name="USR_PROFILE")
+	private Profile profile;
 
 	public User() {
 		super();
 	}
 
-	public User(Integer usrId, String usrName, String usrEmail, String usrPassword, Boolean usrStatus) {
+	public User(Long usrId, String usrName, String usrEmail, String usrPassword, Boolean usrStatus, Profile profile) {
 		super();
 		this.usrId = usrId;
 		this.usrName = usrName;
 		this.usrEmail = usrEmail;
 		this.usrPassword = usrPassword;
 		this.usrStatus = usrStatus;
+		this.profile = profile;
 	}
 
-	public Integer getUsrId() {
+	public Long getUsrId() {
 		return usrId;
 	}
 
-	public void setUsrId(Integer usrId) {
+	public void setUsrId(Long usrId) {
 		this.usrId = usrId;
 	}
 
@@ -85,6 +93,14 @@ public class User implements Serializable{
 
 	public void setUsrStatus(Boolean usrStatus) {
 		this.usrStatus = usrStatus;
+	}
+
+	public Profile getProfile() {
+		return profile;
+	}
+
+	public void setProfile(Profile profile) {
+		this.profile = profile;
 	}
 
 }

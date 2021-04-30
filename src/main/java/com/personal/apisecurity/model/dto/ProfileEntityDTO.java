@@ -2,26 +2,26 @@ package com.personal.apisecurity.model.dto;
 
 public class ProfileEntityDTO {
 
-	private Integer prfId;
+	private Integer Id;
 	
 	private String prfName;
 	
 	public ProfileEntityDTO() {
 		super();
-	}
+	}	
 
-	public ProfileEntityDTO(Integer prfId, String prfName) {
+	public ProfileEntityDTO(Integer id, String prfName) {
 		super();
-		this.prfId = prfId;
+		Id = id;
 		this.prfName = prfName;
 	}
-
-	public Integer getPrfId() {
-		return prfId;
+	
+	public Integer getId() {
+		return Id;
 	}
 
-	public void setPrfId(Integer prfId) {
-		this.prfId = prfId;
+	public void setId(Integer id) {
+		Id = id;
 	}
 
 	public String getPrfName() {
@@ -31,6 +31,5 @@ public class ProfileEntityDTO {
 	public void setPrfName(String prfName) {
 		this.prfName = prfName;
 	}
-	
 	
 }

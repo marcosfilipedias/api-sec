@@ -5,6 +5,8 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -20,17 +22,18 @@ public class Profile implements Serializable{
 	@Id
 	@Basic(optional = false)
 	@Column(name = "PRL_ID")
-	private Integer prfId;
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	private Integer Id;
 	
 	@Column(name = "PFL_NAME")
 	private String prfName;
 
-	public Integer getPrfId() {
-		return prfId;
+	public Integer getId() {
+		return Id;
 	}
 
-	public void setPrfId(Integer prfId) {
-		this.prfId = prfId;
+	public void setId(Integer id) {
+		Id = id;
 	}
 
 	public String getPrfName() {

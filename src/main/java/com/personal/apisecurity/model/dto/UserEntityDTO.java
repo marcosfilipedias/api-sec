@@ -12,6 +12,8 @@ public class UserEntityDTO {
 	
 	private Boolean usrStatus;
 
+	private Integer idProfile;
+	
 	public Integer getUsrId() {
 		return usrId;
 	}
@@ -51,6 +53,12 @@ public class UserEntityDTO {
 	public void setUsrStatus(Boolean usrStatus) {
 		this.usrStatus = usrStatus;
 	}
-	
-	
+
+	public Integer getIdProfile() {
+		return idProfile;
+	}
+
+	public void setIdProfile(Integer idProfile) {
+		this.idProfile = idProfile;
+	}
 }

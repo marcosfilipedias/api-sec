@@ -17,6 +17,11 @@ public class UserAuthDTO {
 		this.autenticado = autenticado;
 	}
 
+	public UserAuthDTO(String login, boolean autenticado) {
+		this.login = login;
+		this.autenticado = autenticado;
+	}
+
 	// getters and setters
 
 	public String getLogin() {

@@ -2,31 +2,42 @@ package com.personal.apisecurity.model.dto;
 
 public class UserViewDTO {
 
-	private Integer usrId;
+	private Long usrId;
 	
 	private String usrName;
 	
 	private String usrEmail;
 	
 	private Boolean usrStatus;
+	
+	private Integer idProfile;
 
 	public UserViewDTO() {
 		super();
 	}
 
-	public UserViewDTO(Integer usrId, String usrName, String usrEmail, Boolean usrStatus) {
+	public UserViewDTO(Long usrId, String usrName, String usrEmail, Boolean usrStatus) {
 		super();
 		this.usrId = usrId;
 		this.usrName = usrName;
 		this.usrEmail = usrEmail;
 		this.usrStatus = usrStatus;
 	}
+	
+	public UserViewDTO(Long usrId, String usrName, String usrEmail, Boolean usrStatus, Integer idProfile) {
+		super();
+		this.usrId = usrId;
+		this.usrName = usrName;
+		this.usrEmail = usrEmail;
+		this.usrStatus = usrStatus;
+		this.idProfile = idProfile;
+	}
 
-	public Integer getUsrId() {
+	public Long getUsrId() {
 		return usrId;
 	}
 
-	public void setUsrId(Integer usrId) {
+	public void setUsrId(Long usrId) {
 		this.usrId = usrId;
 	}
 
@@ -53,5 +64,13 @@ public class UserViewDTO {
 	public void setUsrStatus(Boolean usrStatus) {
 		this.usrStatus = usrStatus;
 	}
-	
+
+	public Integer getIdProfile() {
+		return idProfile;
+	}
+
+	public void setIdProfile(Integer idProfile) {
+		this.idProfile = idProfile;
+	}
+
 }
