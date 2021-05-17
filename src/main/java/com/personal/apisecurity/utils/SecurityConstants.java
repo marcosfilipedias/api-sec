@@ -2,7 +2,7 @@ package com.personal.apisecurity.utils;
 
 public class SecurityConstants {
 
-	public static final String SECRET = "6402cf55fda627cafed908cfdbea7333";
+	public static final String SECRET = "6402cf1325132fdacafed908cfdbeaaa7333";
 	public static final long EXPIRATION_TIME = 300000; // 5min
 	public static final String TOKEN_PREFIX = "Bearer ";
 	public static final String HEADER_STRING = "Authorization";

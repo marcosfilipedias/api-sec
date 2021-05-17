@@ -2,6 +2,7 @@ package com.personal.apisecurity.service;
 
 import java.util.List;
 
+import com.personal.apisecurity.exception.InvalidLoginException;
 import com.personal.apisecurity.model.dto.UserEntityDTO;
 import com.personal.apisecurity.model.dto.UserViewDTO;
 
@@ -14,6 +15,6 @@ public interface UserService {
 	UserViewDTO getUserById(Long id);
 	
 	List<UserViewDTO> getAllUsers();
-	
-	Integer buscarIdUsuarioToken(String login);
+		
+	UserEntityDTO getUserByEmail(String email) throws InvalidLoginException;
 }

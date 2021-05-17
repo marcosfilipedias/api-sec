@@ -11,7 +11,7 @@ import com.personal.apisecurity.model.dto.ProfileEntityDTO;
 import com.personal.apisecurity.service.ProfileService;
 
 @Controller
-@RequestMapping("/api/security/public/profile")
+@RequestMapping("/api/security/profile")
 public class ProfileController {
 
 	private final ProfileService profileService;
@@ -22,8 +22,8 @@ public class ProfileController {
 	}
 	
 	@PostMapping("/save")
-	public ResponseEntity<ProfileEntityDTO> saveProfile(@RequestBody String userJson) {
-		ProfileEntityDTO profile = new Gson().fromJson(userJson, ProfileEntityDTO.class);
+	public ResponseEntity<ProfileEntityDTO> saveProfile(@RequestBody String profileJson) {
+		ProfileEntityDTO profile = new Gson().fromJson(profileJson, ProfileEntityDTO.class);
 		return ResponseEntity.ok(profileService.saveProfile(profile));
 	}
 }

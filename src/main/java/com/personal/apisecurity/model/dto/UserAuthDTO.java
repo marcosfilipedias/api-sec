@@ -1,59 +1,68 @@
 package com.personal.apisecurity.model.dto;
 
 public class UserAuthDTO {
-
-	private String login;
-
-	private String senha;
 	
-	private String sistema;
-
-	private boolean autenticado;
+	private Integer userId;
 	
+	private String userName;
+
+	private ProfileEntityDTO profile;
+			
+	private String token;
+	
+	private boolean authenticated;
+
 	public UserAuthDTO() {
+		super();
+	}
+	
+	public UserAuthDTO(Integer userId, String userName, ProfileEntityDTO profile, String token, boolean authenticated) {
+		super();
+		this.userId = userId;
+		this.userName = userName;
+		this.profile = profile;
+		this.token = token;
+		this.authenticated = authenticated;
 	}
 
-	public UserAuthDTO(boolean autenticado) {
-		this.autenticado = autenticado;
+	public Integer getUserId() {
+		return userId;
 	}
 
-	public UserAuthDTO(String login, boolean autenticado) {
-		this.login = login;
-		this.autenticado = autenticado;
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 
-	// getters and setters
-
-	public String getLogin() {
-		return login;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setLogin(String login) {
-		this.login = login;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
-	public String getSenha() {
-		return senha;
+	public ProfileEntityDTO getProfile() {
+		return profile;
 	}
 
-	public void setSenha(String senha) {
-		this.senha = senha;
+	public void setProfile(ProfileEntityDTO profile) {
+		this.profile = profile;
 	}
 
-	public boolean isAutenticado() {
-		return autenticado;
+	public String getToken() {
+		return token;
 	}
 
-	public void setAutenticado(boolean autenticado) {
-		this.autenticado = autenticado;
+	public void setToken(String token) {
+		this.token = token;
 	}
 
-	public String getSistema() {
-		return sistema;
+	public boolean isAuthenticated() {
+		return authenticated;
 	}
 
-	public void setSistema(String sistema) {
-		this.sistema = sistema;
+	public void setAuthenticated(boolean authenticated) {
+		this.authenticated = authenticated;
 	}
 
 }

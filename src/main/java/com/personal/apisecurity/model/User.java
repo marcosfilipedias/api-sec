@@ -40,6 +40,9 @@ public class User implements Serializable{
 	@ManyToOne()
 	@JoinColumn(name="USR_PROFILE")
 	private Profile profile;
+	
+	@Column(name = "USR_TOKEN")
+	private String token;
 
 	public User() {
 		super();
@@ -101,6 +104,14 @@ public class User implements Serializable{
 
 	public void setProfile(Profile profile) {
 		this.profile = profile;
+	}
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
 	}
 
 }

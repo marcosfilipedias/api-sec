@@ -19,11 +19,4 @@ public interface UserMapper {
 	@Mapping(source = "profile.id", target = "idProfile")
 	UserViewDTO toViewDto(User entity);	
 	
-	/*@Mapping(source = "idSegmento", target = "segmento.id")
-	@Mapping(source = "idShopping", target = "shopping.id")
-	Loja toEntity(LojaEntidadeDTO lojaEntidadeDTO);
-	
-	@Mapping(source = "segmento.id", target = "idSegmento")
-	@Mapping(source = "shopping.id", target = "idShopping")
-	CadastroLojaDTO toDTO(Loja loja);*/
 }

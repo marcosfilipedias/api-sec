@@ -10,7 +10,6 @@ import com.personal.apisecurity.model.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
-	@Query("select u.id from User u where u.usrEmail = :usrEmail")
-	Integer getUserByLogin(@Param("usrEmail") String login);
-
+	@Query("select u from User u where u.usrEmail = :usrEmail")
+	User getUserByLogin(@Param("usrEmail") String login);
 }
