@@ -1,5 +1,6 @@
 package com.personal.apisecurity.controller;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
@@ -15,16 +16,15 @@ import com.personal.apisecurity.model.dto.UserEntityDTO;
 import com.personal.apisecurity.model.dto.UserViewDTO;
 import com.personal.apisecurity.service.UserService;
 
+import lombok.AllArgsConstructor;
+import springfox.documentation.annotations.ApiIgnore;
+
 @Controller
 @RequestMapping("/api/security/user")
+@AllArgsConstructor
 public class UserController {
 
 	private final UserService userService;
-
-	public UserController(UserService userService) {
-		super();
-		this.userService = userService;
-	}
 	
 	@PostMapping("/save")
 	public ResponseEntity<UserViewDTO> saveUser(@RequestBody UserEntityDTO userJson) {
@@ -36,12 +36,12 @@ public class UserController {
 		return ResponseEntity.ok(userService.deleteUser(id));
 	}
 	
-	@GetMapping("{id}")
-	public ResponseEntity<UserViewDTO> getUser(@PathVariable Long id){
-		return ResponseEntity.ok(userService.getUserById(id));
+	@GetMapping()
+	public ResponseEntity<UserViewDTO> getUser(@ApiIgnore Principal principal){
+		return ResponseEntity.ok(userService.getUserById(userService.getUserIdByLogin(principal.getName())));
 	}
 	
-	@GetMapping()
+	@GetMapping("/all")
 	public ResponseEntity<List<UserViewDTO>> getAllUsers(){
 		return ResponseEntity.ok(userService.getAllUsers());
 	}

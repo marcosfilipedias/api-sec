@@ -2,6 +2,8 @@ package com.personal.apisecurity;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @SpringBootApplication
 public class ApiSecurityApplication {
@@ -10,8 +12,8 @@ public class ApiSecurityApplication {
 		SpringApplication.run(ApiSecurityApplication.class, args);
 	}
 
-	/*@Bean 
-	public PasswordEncoder passwordEncoder() { 
-	    return new BCryptPasswordEncoder(); 
-	}*/
+	@Bean
+	public BCryptPasswordEncoder bCryptPasswordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
 }

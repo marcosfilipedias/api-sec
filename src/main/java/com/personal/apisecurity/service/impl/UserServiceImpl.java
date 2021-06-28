@@ -3,36 +3,31 @@ package com.personal.apisecurity.service.impl;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.personal.apisecurity.exception.InvalidLoginException;
 import com.personal.apisecurity.mapper.UserMapper;
 import com.personal.apisecurity.model.User;
 import com.personal.apisecurity.model.dto.UserEntityDTO;
 import com.personal.apisecurity.model.dto.UserViewDTO;
 import com.personal.apisecurity.repository.UserRepository;
-import com.personal.apisecurity.service.TokenService;
 import com.personal.apisecurity.service.UserService;
 
+import lombok.AllArgsConstructor;
+
 @Service
+@AllArgsConstructor
 public class UserServiceImpl implements UserService{
-	
+
+	private final BCryptPasswordEncoder bCryptPasswordEncoder;
 	private UserRepository userRepository;
 	private UserMapper userMapper;
-	private TokenService tokenService;
-
-	public UserServiceImpl(UserRepository userRepository, UserMapper userMapper, TokenService tokenService) {
-		super();
-		this.userRepository = userRepository;
-		this.userMapper = userMapper;
-		this.tokenService = tokenService;
-	}
-
+	
 	@Override
 	public UserViewDTO saveUser(UserEntityDTO user) {
 		
-		User savedUser = userMapper.toEntity(user);		
-		savedUser.setToken(tokenService.generateToken(user));		
+		User savedUser = userMapper.toEntity(user);
+		savedUser.setUsrPassword(bCryptPasswordEncoder.encode(user.getUsrPassword()));
 		savedUser = userRepository.saveAndFlush(savedUser);
 		
 		return userMapper.toViewDto(savedUser);
@@ -55,17 +50,16 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public List<UserViewDTO> getAllUsers() {
-		return userRepository.findAll().stream().map(x -> new UserViewDTO(x.getUsrId(), x.getUsrName(), x.getUsrEmail(), x.getUsrStatus())).collect(Collectors.toList());
+		return userRepository.findAll().stream().map(x -> new UserViewDTO(x.getUsrId(), x.getUsrName(), x.getUsrEmail(), x.getUsrStatus(), null)).collect(Collectors.toList());
 	}
 
 	@Override
-	public UserEntityDTO getUserByEmail(String email) throws InvalidLoginException {	
-		User user = userRepository.getUserByLogin(email);
-		if(user != null) {
-			return userMapper.toDto(user);
-		}else {
-			throw new InvalidLoginException("Email not found!");
-		}
+	public String getProfileByLogin(String login) {
+		return userRepository.getProfileByLogin(login);
 	}
 
+	@Override
+	public Long getUserIdByLogin(String login) {
+		return userRepository.getUserIdByLogin(login);
+	}
 }
