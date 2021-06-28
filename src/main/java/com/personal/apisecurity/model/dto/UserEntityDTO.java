@@ -1,64 +1,30 @@
 package com.personal.apisecurity.model.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserEntityDTO {
 
+	@Getter @Setter
 	private Integer usrId;
 	
+	@Getter @Setter
 	private String usrName;
 	
+	@Getter @Setter
 	private String usrEmail;
 	
+	@Getter @Setter
 	private String usrPassword;
 	
+	@Getter @Setter
 	private Boolean usrStatus;
 
+	@Getter @Setter
 	private Integer idProfile;
 	
-	public Integer getUsrId() {
-		return usrId;
-	}
-
-	public void setUsrId(Integer usrId) {
-		this.usrId = usrId;
-	}
-
-	public String getUsrName() {
-		return usrName;
-	}
-
-	public void setUsrName(String usrName) {
-		this.usrName = usrName;
-	}
-
-	public String getUsrEmail() {
-		return usrEmail;
-	}
-
-	public void setUsrEmail(String usrEmail) {
-		this.usrEmail = usrEmail;
-	}
-
-	public String getUsrPassword() {
-		return usrPassword;
-	}
-
-	public void setUsrPassword(String usrPassword) {
-		this.usrPassword = usrPassword;
-	}
-
-	public Boolean getUsrStatus() {
-		return usrStatus;
-	}
-
-	public void setUsrStatus(Boolean usrStatus) {
-		this.usrStatus = usrStatus;
-	}
-
-	public Integer getIdProfile() {
-		return idProfile;
-	}
-
-	public void setIdProfile(Integer idProfile) {
-		this.idProfile = idProfile;
-	}
 }

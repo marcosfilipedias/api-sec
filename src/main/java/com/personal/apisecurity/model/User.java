@@ -11,8 +11,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 @Entity
-@Table(name = "USER")
+@Table(name = "USERS")
+@AllArgsConstructor
+@NoArgsConstructor
 public class User implements Serializable{
 
 	/**
@@ -23,95 +30,22 @@ public class User implements Serializable{
 	@Id
 	@Column(name = "USR_ID")
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
-	private Long usrId;
+	@Getter private Integer usrId;
 	
 	@Column(name = "USR_NAME")
-	private String usrName;
+	@Getter @Setter private String usrName;
 	
 	@Column(name = "USR_EMAIL")
-	private String usrEmail;
+	@Getter @Setter private String usrEmail;
 	
 	@Column(name = "USR_PASSWORD")
-	private String usrPassword;
+	@Getter @Setter private String usrPassword;
 	
 	@Column(name = "USR_STATUS")
-	private Boolean usrStatus;
+	@Getter @Setter private Boolean usrStatus;
 	
 	@ManyToOne()
 	@JoinColumn(name="USR_PROFILE")
-	private Profile profile;
-	
-	@Column(name = "USR_TOKEN")
-	private String token;
-
-	public User() {
-		super();
-	}
-
-	public User(Long usrId, String usrName, String usrEmail, String usrPassword, Boolean usrStatus, Profile profile) {
-		super();
-		this.usrId = usrId;
-		this.usrName = usrName;
-		this.usrEmail = usrEmail;
-		this.usrPassword = usrPassword;
-		this.usrStatus = usrStatus;
-		this.profile = profile;
-	}
-
-	public Long getUsrId() {
-		return usrId;
-	}
-
-	public void setUsrId(Long usrId) {
-		this.usrId = usrId;
-	}
-
-	public String getUsrName() {
-		return usrName;
-	}
-
-	public void setUsrName(String usrName) {
-		this.usrName = usrName;
-	}
-
-	public String getUsrEmail() {
-		return usrEmail;
-	}
-
-	public void setUsrEmail(String usrEmail) {
-		this.usrEmail = usrEmail;
-	}
-
-	public String getUsrPassword() {
-		return usrPassword;
-	}
-
-	public void setUsrPassword(String usrPassword) {
-		this.usrPassword = usrPassword;
-	}
-
-	public Boolean getUsrStatus() {
-		return usrStatus;
-	}
-
-	public void setUsrStatus(Boolean usrStatus) {
-		this.usrStatus = usrStatus;
-	}
-
-	public Profile getProfile() {
-		return profile;
-	}
-
-	public void setProfile(Profile profile) {
-		this.profile = profile;
-	}
-
-	public String getToken() {
-		return token;
-	}
-
-	public void setToken(String token) {
-		this.token = token;
-	}
+	@Getter @Setter private Profile profile;
 
 }
