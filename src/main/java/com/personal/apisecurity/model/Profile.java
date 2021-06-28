@@ -10,8 +10,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 @Entity
 @Table(name = "PROFILE")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Profile implements Serializable{
 
 	/**
@@ -23,26 +30,9 @@ public class Profile implements Serializable{
 	@Basic(optional = false)
 	@Column(name = "PRL_ID")
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
-	private Integer Id;
+	@Getter @Setter private Integer Id;
 	
 	@Column(name = "PFL_NAME")
-	private String prfName;
-
-	public Integer getId() {
-		return Id;
-	}
-
-	public void setId(Integer id) {
-		Id = id;
-	}
-
-	public String getPrfName() {
-		return prfName;
-	}
-
-	public void setPrfName(String prfName) {
-		this.prfName = prfName;
-	}
-	
+	@Getter @Setter private String prfName;
 	
 }
