@@ -6,24 +6,20 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.google.gson.Gson;
 import com.personal.apisecurity.model.dto.ProfileEntityDTO;
 import com.personal.apisecurity.service.ProfileService;
 
+import lombok.AllArgsConstructor;
+
 @Controller
 @RequestMapping("/api/security/profile")
+@AllArgsConstructor
 public class ProfileController {
 
 	private final ProfileService profileService;
 
-	public ProfileController(ProfileService profileService) {
-		super();
-		this.profileService = profileService;
-	}
-	
 	@PostMapping("/save")
-	public ResponseEntity<ProfileEntityDTO> saveProfile(@RequestBody String profileJson) {
-		ProfileEntityDTO profile = new Gson().fromJson(profileJson, ProfileEntityDTO.class);
+	public ResponseEntity<ProfileEntityDTO> saveProfile(@RequestBody ProfileEntityDTO profile) {
 		return ResponseEntity.ok(profileService.saveProfile(profile));
-	}
+	}	
 }

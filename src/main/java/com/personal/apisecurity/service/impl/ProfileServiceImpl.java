@@ -11,17 +11,14 @@ import com.personal.apisecurity.model.dto.ProfileEntityDTO;
 import com.personal.apisecurity.repository.ProfileRepository;
 import com.personal.apisecurity.service.ProfileService;
 
+import lombok.AllArgsConstructor;
+
 @Service
+@AllArgsConstructor
 public class ProfileServiceImpl implements ProfileService{
 
 	private ProfileRepository profileRepository;
 	private ProfileMapper profileMapper;
-
-	public ProfileServiceImpl(ProfileRepository profileRepository, ProfileMapper profileMapper) {
-		super();
-		this.profileRepository = profileRepository;
-		this.profileMapper = profileMapper;
-	}
 
 	@Override
 	public ProfileEntityDTO saveProfile(ProfileEntityDTO profile) {
@@ -44,6 +41,5 @@ public class ProfileServiceImpl implements ProfileService{
 	public List<ProfileEntityDTO> getAllProfiles() {
 		return profileRepository.findAll().stream().map(x -> new ProfileEntityDTO(x.getId(), x.getPrfName())).collect(Collectors.toList());
 	}
-	
 	
 }
